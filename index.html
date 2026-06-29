@@ -3,11 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>AnimVerse AI</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -21,144 +19,145 @@ color:white;
 }
 
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px;
 background:#11182d;
+padding:20px;
+text-align:center;
 }
 
 .logo{
-font-size:28px;
+font-size:32px;
 font-weight:bold;
 color:#8b5cf6;
 }
 
-nav a{
-color:white;
-text-decoration:none;
-margin-left:20px;
-}
-
 .hero{
-padding:80px 20px;
+padding:50px 20px;
 text-align:center;
 }
 
 .hero h1{
-font-size:50px;
-margin-bottom:20px;
+font-size:38px;
+margin-bottom:15px;
 }
 
 .hero p{
-font-size:20px;
+font-size:18px;
 color:#cbd5e1;
-margin-bottom:35px;
+margin-bottom:30px;
 }
 
 .btn{
 background:#8b5cf6;
-padding:15px 35px;
+color:white;
+padding:15px 30px;
 border:none;
 border-radius:12px;
-color:white;
 font-size:18px;
 cursor:pointer;
-transition:.3s;
 }
 
-.btn:hover{
-background:#7c3aed;
-transform:scale(1.05);
+.generator{
+max-width:700px;
+margin:30px auto;
+padding:25px;
+background:#18233d;
+border-radius:15px;
+text-align:center;
+}
+
+.generator input,
+.generator textarea{
+width:100%;
+padding:15px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+font-size:16px;
 }
 
 .features{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+grid-template-columns:1fr;
 gap:20px;
-padding:40px;
+padding:20px;
 }
 
 .card{
 background:#18233d;
-padding:30px;
+padding:20px;
 border-radius:15px;
 text-align:center;
 }
 
 .card h2{
-margin-bottom:15px;
 color:#8b5cf6;
+margin-bottom:10px;
 }
 
 footer{
 text-align:center;
-padding:25px;
+padding:20px;
+margin-top:40px;
 background:#11182d;
-margin-top:50px;
 }
 
-</style>
+@media(min-width:768px){
+.features{
+grid-template-columns:repeat(3,1fr);
+}
 
+.hero h1{
+font-size:60px;
+}
+}
+</style>
 </head>
 
 <body>
 
 <header>
-
-<div class="logo">
-🚀 AnimVerse AI
-</div>
-
-<nav>
-
-<a href="#">Home</a>
-
-<a href="#">Features</a>
-
-<a href="#">Pricing</a>
-
-<a href="#">Contact</a>
-
-</nav>
-
+<div class="logo">🚀 AnimVerse AI</div>
 </header>
 
 <section class="hero">
-
 <h1>Create AI Animation Videos</h1>
+<p>Create amazing AI videos from text or images.</p>
+<button class="btn">Start Creating</button>
+</section>
 
-<p>Create stunning AI videos in seconds with AnimVerse AI.</p>
+<section class="generator">
 
-<button class="btn">
-Start Creating
-</button>
+<h2>🎬 AI Video Generator</h2>
+
+<textarea rows="5" placeholder="Describe your animation..."></textarea>
+
+<input type="file">
+
+<button class="btn">Generate Video</button>
 
 </section>
 
 <section class="features">
 
 <div class="card">
-<h2>🎬 AI Video</h2>
-<p>Create AI videos from text prompts.</p>
+<h2>🎥 AI Video</h2>
+<p>Create videos using text prompts.</p>
 </div>
 
 <div class="card">
-<h2>🖼 Image to Video</h2>
-<p>Turn any image into an animation.</p>
+<h2>🖼️ Image to Video</h2>
+<p>Convert your images into animations.</p>
 </div>
 
 <div class="card">
 <h2>⚡ Fast Rendering</h2>
-<p>Generate videos in just a few clicks.</p>
+<p>Generate videos quickly with AI.</p>
 </div>
 
 </section>
 
 <footer>
-
 © 2026 AnimVerse AI
-
 </footer>
 
 </body>
