@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AnimVerse AI</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -14,119 +16,141 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#0f172a;
+background:#0b1020;
 color:white;
 }
 
-nav{
+header{
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:20px;
-background:#111827;
+background:#11182d;
 }
 
 .logo{
 font-size:28px;
 font-weight:bold;
-color:#7c3aed;
+color:#8b5cf6;
 }
 
 nav a{
 color:white;
 text-decoration:none;
-margin-left:15px;
+margin-left:20px;
 }
 
 .hero{
-text-align:center;
 padding:80px 20px;
+text-align:center;
 }
 
 .hero h1{
-font-size:42px;
+font-size:50px;
 margin-bottom:20px;
 }
 
 .hero p{
-font-size:18px;
-color:#d1d5db;
-margin-bottom:30px;
+font-size:20px;
+color:#cbd5e1;
+margin-bottom:35px;
 }
 
-button{
+.btn{
+background:#8b5cf6;
 padding:15px 35px;
-font-size:18px;
-background:#7c3aed;
-color:white;
 border:none;
-border-radius:8px;
+border-radius:12px;
+color:white;
+font-size:18px;
 cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:#7c3aed;
+transform:scale(1.05);
 }
 
 .features{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 padding:40px;
 }
 
 .card{
-background:#1e293b;
-padding:25px;
-border-radius:12px;
+background:#18233d;
+padding:30px;
+border-radius:15px;
 text-align:center;
+}
+
+.card h2{
+margin-bottom:15px;
+color:#8b5cf6;
 }
 
 footer{
 text-align:center;
-padding:20px;
-background:#111827;
-margin-top:40px;
+padding:25px;
+background:#11182d;
+margin-top:50px;
 }
+
 </style>
 
 </head>
 
 <body>
 
-<nav>
-<div class="logo">AnimVerse AI</div>
+<header>
 
-<div>
-<a href="#">Home</a>
-<a href="#">Features</a>
-<a href="#">Pricing</a>
-<a href="#">Contact</a>
+<div class="logo">
+🚀 AnimVerse AI
 </div>
+
+<nav>
+
+<a href="#">Home</a>
+
+<a href="#">Features</a>
+
+<a href="#">Pricing</a>
+
+<a href="#">Contact</a>
 
 </nav>
 
+</header>
+
 <section class="hero">
 
-<h1>Create AI Images & Videos Instantly 🚀</h1>
+<h1>Create AI Animation Videos</h1>
 
-<p>Generate Amazing AI Images and Animation Videos in Seconds.</p>
+<p>Create stunning AI videos in seconds with AnimVerse AI.</p>
 
-<button>Start Creating</button>
+<button class="btn">
+Start Creating
+</button>
 
 </section>
 
 <section class="features">
 
 <div class="card">
-<h2>🎨 AI Image</h2>
-<p>Create stunning AI images.</p>
+<h2>🎬 AI Video</h2>
+<p>Create AI videos from text prompts.</p>
 </div>
 
 <div class="card">
-<h2>🎥 AI Video</h2>
-<p>Generate AI animation videos.</p>
+<h2>🖼 Image to Video</h2>
+<p>Turn any image into an animation.</p>
 </div>
 
 <div class="card">
-<h2>⚡ Fast</h2>
-<p>Create content in seconds.</p>
+<h2>⚡ Fast Rendering</h2>
+<p>Generate videos in just a few clicks.</p>
 </div>
 
 </section>
@@ -138,5 +162,4 @@ margin-top:40px;
 </footer>
 
 </body>
-
 </html>
