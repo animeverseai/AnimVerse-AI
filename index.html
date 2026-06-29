@@ -1,34 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AnimVerse AI</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
 body{
 background:#0f172a;
 color:white;
-font-family:Arial;
-text-align:center;
-padding:50px;
 }
 
-h1{
-font-size:40px;
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px;
+background:#111827;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
 color:#7c3aed;
 }
 
-p{
-font-size:20px;
+nav a{
+color:white;
+text-decoration:none;
+margin-left:15px;
+}
+
+.hero{
+text-align:center;
+padding:80px 20px;
+}
+
+.hero h1{
+font-size:42px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+color:#d1d5db;
+margin-bottom:30px;
 }
 
 button{
+padding:15px 35px;
+font-size:18px;
 background:#7c3aed;
 color:white;
 border:none;
-padding:15px 30px;
-font-size:20px;
-border-radius:10px;
-margin-top:20px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.features{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+padding:40px;
+}
+
+.card{
+background:#1e293b;
+padding:25px;
+border-radius:12px;
+text-align:center;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#111827;
+margin-top:40px;
 }
 </style>
 
@@ -36,11 +90,53 @@ margin-top:20px;
 
 <body>
 
-<h1>🚀 AnimVerse AI</h1>
+<nav>
+<div class="logo">AnimVerse AI</div>
 
-<p>Create Amazing AI Animation Videos</p>
+<div>
+<a href="#">Home</a>
+<a href="#">Features</a>
+<a href="#">Pricing</a>
+<a href="#">Contact</a>
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Create AI Images & Videos Instantly 🚀</h1>
+
+<p>Generate Amazing AI Images and Animation Videos in Seconds.</p>
 
 <button>Start Creating</button>
 
+</section>
+
+<section class="features">
+
+<div class="card">
+<h2>🎨 AI Image</h2>
+<p>Create stunning AI images.</p>
+</div>
+
+<div class="card">
+<h2>🎥 AI Video</h2>
+<p>Generate AI animation videos.</p>
+</div>
+
+<div class="card">
+<h2>⚡ Fast</h2>
+<p>Create content in seconds.</p>
+</div>
+
+</section>
+
+<footer>
+
+© 2026 AnimVerse AI
+
+</footer>
+
 </body>
+
 </html>
