@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>AnimVerse AI</title>
 
 <style>
+
 *{
 margin:0;
 padding:0;
@@ -19,146 +21,206 @@ color:white;
 }
 
 header{
-background:#11182d;
+display:flex;
+justify-content:space-between;
+align-items:center;
 padding:20px;
-text-align:center;
+background:#121933;
+position:sticky;
+top:0;
 }
 
-.logo{
-font-size:32px;
-font-weight:bold;
+header h2{
 color:#8b5cf6;
 }
 
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+
 .hero{
-padding:50px 20px;
 text-align:center;
+padding:80px 20px;
 }
 
 .hero h1{
-font-size:38px;
-margin-bottom:15px;
+font-size:55px;
+margin-bottom:20px;
 }
 
 .hero p{
-font-size:18px;
-color:#cbd5e1;
+font-size:22px;
+color:#bdbdbd;
 margin-bottom:30px;
 }
 
-.btn{
+button{
 background:#8b5cf6;
 color:white;
-padding:15px 30px;
 border:none;
+padding:18px 40px;
 border-radius:12px;
-font-size:18px;
+font-size:20px;
 cursor:pointer;
+transition:.3s;
 }
 
-.generator{
-max-width:700px;
-margin:30px auto;
-padding:25px;
-background:#18233d;
-border-radius:15px;
-text-align:center;
+button:hover{
+background:#6d28d9;
 }
 
-.generator input,
-.generator textarea{
-width:100%;
-padding:15px;
-margin:10px 0;
-border:none;
-border-radius:10px;
-font-size:16px;
-}
-
-.features{
-display:grid;
-grid-template-columns:1fr;
-gap:20px;
-padding:20px;
+.section{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
 }
 
 .card{
-background:#18233d;
-padding:20px;
+background:#151d39;
+padding:25px;
+margin:20px 0;
 border-radius:15px;
-text-align:center;
 }
 
 .card h2{
 color:#8b5cf6;
-margin-bottom:10px;
+margin-bottom:15px;
+}
+
+textarea{
+width:100%;
+height:180px;
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:18px;
+margin-bottom:15px;
+}
+
+input[type=file]{
+margin-bottom:20px;
+color:white;
+}
+
+#result{
+margin-top:20px;
+font-size:20px;
+color:#7CFFB2;
 }
 
 footer{
+padding:30px;
 text-align:center;
-padding:20px;
-margin-top:40px;
-background:#11182d;
+background:#121933;
+margin-top:50px;
 }
 
-@media(min-width:768px){
-.features{
-grid-template-columns:repeat(3,1fr);
-}
-
-.hero h1{
-font-size:60px;
-}
-}
 </style>
 </head>
-
 <body>
 
 <header>
-<div class="logo">🚀 AnimVerse AI</div>
+<h2>🚀 AnimVerse AI</h2>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">AI Video</a>
+<a href="#">AI Image</a>
+<a href="#">Login</a>
+</nav>
+
 </header>
 
 <section class="hero">
-<h1>Create AI Animation Videos</h1>
-<p>Create amazing AI videos from text or images.</p>
-<button class="btn">Start Creating</button>
+
+<h1>Create Amazing AI Videos</h1>
+
+<p>Generate AI Videos & AI Images from your ideas.</p>
+
+<button onclick="document.getElementById('generator').scrollIntoView();">
+Start Creating
+</button>
+
 </section>
 
-<section class="generator">
+<section class="section" id="generator">
+
+<div class="card">
 
 <h2>🎬 AI Video Generator</h2>
 
-<textarea rows="5" placeholder="Describe your animation..."></textarea>
+<textarea id="prompt" placeholder="Describe your video..."></textarea>
 
 <input type="file">
 
-<button class="btn">Generate Video</button>
+<br>
 
-</section>
+<button onclick="generateVideo()">
+Generate Video
+</button>
 
-<section class="features">
+<div id="result"></div>
 
-<div class="card">
-<h2>🎥 AI Video</h2>
-<p>Create videos using text prompts.</p>
 </div>
 
 <div class="card">
-<h2>🖼️ Image to Video</h2>
-<p>Convert your images into animations.</p>
-</div>
 
-<div class="card">
-<h2>⚡ Fast Rendering</h2>
-<p>Generate videos quickly with AI.</p>
+<h2>🖼 AI Image Generator</h2>
+
+<textarea id="imagePrompt" placeholder="Describe your image..."></textarea>
+
+<button onclick="generateImage()">
+Generate Image
+</button>
+
 </div>
 
 </section>
 
 <footer>
+
 © 2026 AnimVerse AI
+
 </footer>
+<script>
+
+function generateVideo(){
+
+let prompt=document.getElementById("prompt").value;
+
+if(prompt==""){
+alert("Please enter a video prompt.");
+return;
+}
+
+document.getElementById("result").innerHTML=
+"⏳ Generating AI Video...";
+
+setTimeout(function(){
+
+document.getElementById("result").innerHTML=
+"✅ Demo Complete!<br><br>Your AI Video prompt:<br><b>"+prompt+"</b><br><br><small>Real AI video generation will be connected in the next version.</small>";
+
+},2500);
+
+}
+
+function generateImage(){
+
+let prompt=document.getElementById("imagePrompt").value;
+
+if(prompt==""){
+alert("Please enter an image prompt.");
+return;
+}
+
+alert("🎨 Demo: Image Prompt Received:\n\n"+prompt);
+
+}
+
+</script>
 
 </body>
 </html>
