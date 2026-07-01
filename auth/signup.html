@@ -89,6 +89,7 @@ document.getElementById("signupBtn").addEventListener("click", () => {
     return;
   }
 
+  alert("Creating account...");
   createUserWithEmailAndPassword(auth, email, password)
     .then(() => {
       alert("Account Created Successfully!");
