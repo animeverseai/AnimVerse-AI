@@ -223,5 +223,25 @@ alert("🎨 Demo: Image Prompt Received:\n\n"+prompt);
 
 </script>
 
+<div id="authBox" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);display:none;justify-content:center;align-items:center;">
+  <div style="background:#161d35;padding:20px;border-radius:10px;width:320px;">
+    <h2>Login</h2>
+
+    <input id="loginEmail" type="email" placeholder="Email"
+      style="width:100%;padding:10px;margin:10px 0;">
+
+    <input id="loginPassword" type="password" placeholder="Password"
+      style="width:100%;padding:10px;margin:10px 0;">
+
+    <button style="width:100%;">Login</button>
+
+    <br><br>
+
+    <button onclick="document.getElementById('authBox').style.display='none'"
+      style="width:100%;background:red;">
+      Close
+    </button>
+  </div>
+</div>
 </body>
 </html>
