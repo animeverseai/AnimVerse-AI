@@ -59,11 +59,34 @@ margin-top:10px;
 <p>Free Credits: 5</p>
 </div>
 <div class="card">
-<h3>AI Tools</h3>
-<button>AI Chat</button>
-<button>AI Image</button>
-<button>AI Video</button>
+<h3>🎬 AI Video Generator</h3>
+
+<textarea
+id="prompt"
+placeholder="Write your video prompt here..."
+style="width:100%;height:120px;padding:10px;border-radius:8px;">
+</textarea>
+
+<br><br>
+
+<button id="generateBtn">Generate Video</button>
+
+<div id="result" style="margin-top:20px;"></div>
 </div>
+
+<script>
+document.getElementById("generateBtn").addEventListener("click", () => {
+    const prompt = document.getElementById("prompt").value;
+
+    if (prompt.trim() === "") {
+        alert("Please enter a prompt");
+        return;
+    }
+
+    document.getElementById("result").innerHTML =
+        "⏳ Generating video...<br><br><b>" + prompt + "</b>";
+});
+</script>
 </div>
 </body>
 </html>
