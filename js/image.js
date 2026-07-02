@@ -2,7 +2,7 @@ async function generateImage() {
 
   const prompt = document.getElementById("imagePrompt").value.trim();
 
-const style = document.getElementById("imageStyle").value;
+
 const style = document.getElementById("imageStyle").value;
   if (!prompt) {
     alert("Please enter an image prompt.");
