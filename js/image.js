@@ -9,25 +9,40 @@ async function generateImage() {
 
   const imageBox = document.getElementById("imageResult");
 
-  imageBox.innerHTML = `
-    <h3>🎨 Generating AI Image...</h3>
-    <p>Please wait a few seconds.</p>
-  `;
+  imageBox.innerHTML = "<h3>🎨 Generating AI Image...</h3>";
 
   const imageUrl =
-    `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=1024&height=1024&seed=${Date.now()}&nologo=true`;
+    "https://image.pollinations.ai/prompt/" +
+    encodeURIComponent(prompt) +
+    "?width=1024&height=1024&seed=" +
+    Date.now();
 
-  imageBox.innerHTML = `
-      <img id="generatedImage"
-           src="${imageUrl}"
-           style="width:100%;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,.3);">
+  const img = new Image();
 
+  img.style.width = "100%";
+  img.style.borderRadius = "15px";
+
+  img.onload = () => {
+    imageBox.innerHTML = "";
+
+    imageBox.appendChild(img);
+
+    imageBox.innerHTML += `
       <br><br>
-
-      <a href="${imageUrl}" download="AnimVerseAI_Image.png">
-          <button class="download-btn">
-              ⬇ Download Image
-          </button>
+      <a href="${imageUrl}" target="_blank">
+        <button class="download-btn">
+          ⬇ Download Image
+        </button>
       </a>
-  `;
+    `;
+  };
+
+  img.onerror = () => {
+    imageBox.innerHTML = `
+      <h3>❌ Image Generate Failed</h3>
+      <p>Try again after a few seconds.</p>
+    `;
+  };
+
+  img.src = imageUrl;
 }
