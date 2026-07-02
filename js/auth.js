@@ -35,8 +35,7 @@ if (loginBtn) {
     const password = document.getElementById("password").value;
 
     signInWithEmailAndPassword(auth, email, password)
-      .
-            .then(() => {
+             .then(() => {
         alert("Login Successful!");
         window.location.href = "../auth/dashboard.html";
       })
