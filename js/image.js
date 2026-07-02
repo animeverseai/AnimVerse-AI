@@ -12,10 +12,8 @@ async function generateImage() {
   imageBox.innerHTML = "<h3>🎨 Generating AI Image...</h3>";
 
   const imageUrl =
-    "https://image.pollinations.ai/prompt/" +
-    encodeURIComponent(prompt) +
-    "?width=1024&height=1024&seed=" +
-    Date.now();
+  "https://image.pollinations.ai/prompt/" +
+  encodeURIComponent(prompt);
 
   const img = new Image();
 
