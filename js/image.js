@@ -12,3 +12,6 @@ async function generateImage() {
 
   alert("Image Generator connected successfully!\n\nNext step me hum AI image generate karenge.");
 }
+async function testConnection() {
+  console.log("AI Image Generator Ready");
+}
