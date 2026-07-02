@@ -1,9 +1,8 @@
 async function generateImage() {
 
   const prompt = document.getElementById("imagePrompt").value.trim();
+  const style = document.getElementById("imageStyle").value;
 
-
-const style = document.getElementById("imageStyle").value;
   if (!prompt) {
     alert("Please enter an image prompt.");
     return;
@@ -13,9 +12,12 @@ const style = document.getElementById("imageStyle").value;
 
   imageBox.innerHTML = "<h3>🎨 Generating AI Image...</h3>";
 
+  const finalPrompt = `${style} ${prompt}, ultra detailed, 8k, masterpiece, high quality`;
+
   const imageUrl =
-  "https://image.pollinations.ai/prompt/" +
-  encodeURIComponent(style + " " + prompt);
+    "https://image.pollinations.ai/prompt/" +
+    encodeURIComponent(finalPrompt) +
+    "?width=1024&height=1024&seed=" + Date.now();
 
   const img = new Image();
 
@@ -40,7 +42,7 @@ const style = document.getElementById("imageStyle").value;
   img.onerror = () => {
     imageBox.innerHTML = `
       <h3>❌ Image Generate Failed</h3>
-      <p>Try again after a few seconds.</p>
+      <p>Please try again.</p>
     `;
   };
 
