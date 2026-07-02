@@ -15,7 +15,7 @@ const style = document.getElementById("imageStyle").value;
 
   const imageUrl =
   "https://image.pollinations.ai/prompt/" +
-  encodeURIComponent(prompt);
+  encodeURIComponent(style + " " + prompt);
 
   const img = new Image();
 
