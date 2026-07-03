@@ -12,19 +12,59 @@ async function generateImage() {
 
   imageBox.innerHTML = "<h3>🎨 Generating AI Image...</h3>";
 
-  const finalPrompt = `${style} ${prompt}, ultra detailed, 8k, masterpiece, high quality`;
+  const finalPrompt = `${style} ${prompt}, ultra detailed, masterpiece, 8k`;
 
-  const imageUrl =
-    "https://image.pollinations.ai/prompt/" +
-    encodeURIComponent(finalPrompt) +
-    "?width=1024&height=1024&seed=" + Date.now();
+  async function loadImage(retry = 3) {
 
-  const img = new Image();
+    const imageUrl =
+      "https://image.pollinations.ai/prompt/" +
+      encodeURIComponent(finalPrompt) +
+      "?width=1024&height=1024&seed=" +
+      Date.now() +
+      "&nolog=true";
 
-  img.style.width = "100%";
-  img.style.borderRadius = "15px";
+    return new Promise((resolve, reject) => {
 
-  img.onload = () => {
+      const img = new Image();
+
+      img.style.width = "100%";
+      img.style.borderRadius = "15px";
+
+      img.onload = () => resolve({ img, imageUrl });
+
+      img.onerror = async () => {
+
+        if (retry > 0) {
+
+          imageBox.innerHTML =
+            `<h3>🔄 Retrying... (${4 - retry}/3)</h3>`;
+
+          setTimeout(async () => {
+            try {
+              resolve(await loadImage(retry - 1));
+            } catch (e) {
+              reject(e);
+            }
+          }, 1500);
+
+        } else {
+
+          reject();
+
+        }
+
+      };
+
+      img.src = imageUrl;
+
+    });
+
+  }
+
+  try {
+
+    const { img, imageUrl } = await loadImage();
+
     imageBox.innerHTML = "";
 
     imageBox.appendChild(img);
@@ -37,14 +77,14 @@ async function generateImage() {
         </button>
       </a>
     `;
-  };
 
-  img.onerror = () => {
+  } catch {
+
     imageBox.innerHTML = `
       <h3>❌ Image Generate Failed</h3>
-      <p>Please try again.</p>
+      <p>Server busy hai. Please try again.</p>
     `;
-  };
 
-  img.src = imageUrl;
+  }
+
 }
