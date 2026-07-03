@@ -35,7 +35,16 @@ cinematic lighting,
 sharp focus,
 professional photography,
 highly detailed,
-best quality
+best quality,
+blurry,
+low quality,
+watermark,
+text,
+logo,
+cropped,
+deformed,
+ugly
+`;
 `;
 
   async function loadImage(retry = 3) {
