@@ -1,33 +1,25 @@
 async function generateImage() {
-  
+
   const generateBtn = document.getElementById("generateBtn");
-const loading = document.getElementById("loading");
-
-generateBtn.disabled = true;
-generateBtn.innerHTML = "⏳ Generating...";
-
-loading.style.display = "block";
+  const loading = document.getElementById("loading");
+  const imageBox = document.getElementById("imageResult");
 
   const prompt = document.getElementById("imagePrompt").value.trim();
   const style = document.getElementById("imageStyle").value;
-
   const imageSize = document.getElementById("imageSize").value;
-  if (!prompt) {
-    loading.style.display = "none";
-    generateBtn.disabled = false;
-    generateBtn.innerHTML = "🎨 Generate Image";
 
+  if (!prompt) {
     alert("Please enter an image prompt.");
     return;
-}
+  }
 
-  const imageBox = document.getElementById("imageResult");
-
-  imageBox.innerHTML = "<h3>🎨 Generating AI Image...</h3>";
+  generateBtn.disabled = true;
+  generateBtn.innerHTML = "⏳ Generating...";
+  loading.style.display = "block";
+  imageBox.innerHTML = "";
 
   const finalPrompt = `
-${style},
-${prompt},
+${style} ${prompt},
 ultra realistic,
 masterpiece,
 8k,
@@ -35,17 +27,7 @@ high quality,
 cinematic lighting,
 sharp focus,
 professional photography,
-highly detailed,
-best quality,
-blurry,
-low quality,
-watermark,
-text,
-logo,
-cropped,
-deformed,
-ugly
-`;
+highly detailed
 `;
 
   async function loadImage(retry = 3) {
@@ -54,9 +36,9 @@ ugly
       "https://image.pollinations.ai/prompt/" +
       encodeURIComponent(finalPrompt) +
       "?width=" + imageSize +
-"&height=" + imageSize +
-"&seed=" + Date.now() +
-"&nolog=true";
+      "&height=" + imageSize +
+      "&seed=" + Date.now() +
+      "&nolog=true";
 
     return new Promise((resolve, reject) => {
 
@@ -67,19 +49,19 @@ ugly
 
       img.onload = () => resolve({ img, imageUrl });
 
-      img.onerror = async () => {
+      img.onerror = () => {
 
         if (retry > 0) {
 
           imageBox.innerHTML =
             `<h3>🔄 Retrying... (${4 - retry}/3)</h3>`;
 
-          setTimeout(async () => {
-            try {
-              resolve(await loadImage(retry - 1));
-            } catch (e) {
-              reject(e);
-            }
+          setTimeout(() => {
+
+            loadImage(retry - 1)
+              .then(resolve)
+              .catch(reject);
+
           }, 1500);
 
         } else {
@@ -100,11 +82,11 @@ ugly
 
     const { img, imageUrl } = await loadImage();
 
-loading.style.display = "none";
-generateBtn.disabled = false;
-generateBtn.innerHTML = "🎨 Generate Image";
-    imageBox.innerHTML = "";
+    loading.style.display = "none";
+    generateBtn.disabled = false;
+    generateBtn.innerHTML = "🎨 Generate Image";
 
+    imageBox.innerHTML = "";
     imageBox.appendChild(img);
 
     imageBox.innerHTML += `
@@ -118,13 +100,14 @@ generateBtn.innerHTML = "🎨 Generate Image";
 
   } catch {
 
-loading.style.display = "none";
-generateBtn.disabled = false;
-generateBtn.innerHTML = "🎨 Generate Image";
+    loading.style.display = "none";
+    generateBtn.disabled = false;
+    generateBtn.innerHTML = "🎨 Generate Image";
+
     imageBox.innerHTML = `
       <h3>❌ Image Generate Failed</h3>
       <p>Server busy hai. Please try again.</p>
-  `;
+    `;
 
   }
 
