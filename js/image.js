@@ -12,9 +12,13 @@ loading.style.display = "block";
   const style = document.getElementById("imageStyle").value;
 
   if (!prompt) {
+    loading.style.display = "none";
+    generateBtn.disabled = false;
+    generateBtn.innerHTML = "🎨 Generate Image";
+
     alert("Please enter an image prompt.");
     return;
-  }
+}
 
   const imageBox = document.getElementById("imageResult");
 
@@ -91,6 +95,9 @@ generateBtn.innerHTML = "🎨 Generate Image";
 
   } catch {
 
+loading.style.display = "none";
+generateBtn.disabled = false;
+generateBtn.innerHTML = "🎨 Generate Image";
     imageBox.innerHTML = `
       <h3>❌ Image Generate Failed</h3>
       <p>Server busy hai. Please try again.</p>
