@@ -73,6 +73,9 @@ loading.style.display = "block";
 
     const { img, imageUrl } = await loadImage();
 
+loading.style.display = "none";
+generateBtn.disabled = false;
+generateBtn.innerHTML = "🎨 Generate Image";
     imageBox.innerHTML = "";
 
     imageBox.appendChild(img);
