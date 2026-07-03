@@ -310,24 +310,7 @@ document.getElementById("result").innerHTML=
 
 }
 
-let prompt=document.getElementById("prompt").value;
 
-if(prompt==""){
-alert("Please enter a video prompt.");
-return;
-}
-
-document.getElementById("result").innerHTML=
-"⏳ Generating AI Video...";
-
-setTimeout(function(){
-
-document.getElementById("result").innerHTML=
-"✅ Demo Complete!<br><br>Your AI Video prompt:<br><b>"+prompt+"</b><br><br><small>Real AI video generation will be connected in the next version.</small>";
-
-},2500);
-
-}
 
 
 </script>
