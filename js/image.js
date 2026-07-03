@@ -1,4 +1,12 @@
 async function generateImage() {
+  
+  const generateBtn = document.getElementById("generateBtn");
+const loading = document.getElementById("loading");
+
+generateBtn.disabled = true;
+generateBtn.innerHTML = "⏳ Generating...";
+
+loading.style.display = "block";
 
   const prompt = document.getElementById("imagePrompt").value.trim();
   const style = document.getElementById("imageStyle").value;
