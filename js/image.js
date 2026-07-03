@@ -24,7 +24,19 @@ loading.style.display = "block";
 
   imageBox.innerHTML = "<h3>🎨 Generating AI Image...</h3>";
 
-  const finalPrompt = `${style} ${prompt}, ultra detailed, masterpiece, 8k`;
+  const finalPrompt = `
+${style},
+${prompt},
+ultra realistic,
+masterpiece,
+8k,
+high quality,
+cinematic lighting,
+sharp focus,
+professional photography,
+highly detailed,
+best quality
+`;
 
   async function loadImage(retry = 3) {
 
