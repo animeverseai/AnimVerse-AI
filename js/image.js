@@ -11,6 +11,7 @@ loading.style.display = "block";
   const prompt = document.getElementById("imagePrompt").value.trim();
   const style = document.getElementById("imageStyle").value;
 
+  const imageSize = document.getElementById("imageSize").value;
   if (!prompt) {
     loading.style.display = "none";
     generateBtn.disabled = false;
@@ -52,7 +53,7 @@ ugly
     const imageUrl =
       "https://image.pollinations.ai/prompt/" +
       encodeURIComponent(finalPrompt) +
-      "?width=1024&height=1024&seed=" +
+      "?width=" + imageSize + "&height=" + imageSize + "&seed="
       Date.now() +
       "&nolog=true";
 
