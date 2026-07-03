@@ -53,9 +53,10 @@ ugly
     const imageUrl =
       "https://image.pollinations.ai/prompt/" +
       encodeURIComponent(finalPrompt) +
-      "?width=" + imageSize + "&height=" + imageSize + "&seed="
-      Date.now() +
-      "&nolog=true";
+      "?width=" + imageSize +
+"&height=" + imageSize +
+"&seed=" + Date.now() +
+"&nolog=true";
 
     return new Promise((resolve, reject) => {
 
