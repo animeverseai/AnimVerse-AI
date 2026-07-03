@@ -265,6 +265,51 @@ Generate Video
 
 function generateVideo(){
 
+let prompt = document.getElementById("prompt").value;
+
+if(prompt==""){
+alert("Please enter a video prompt.");
+return;
+}
+
+document.getElementById("videoLoading").style.display="block";
+document.getElementById("result").innerHTML="";
+
+let progress=0;
+
+let timer=setInterval(function(){
+
+progress+=10;
+
+document.getElementById("videoProgress").innerHTML=progress+"%";
+
+if(progress>=100){
+
+clearInterval(timer);
+
+document.getElementById("videoLoading").style.display="none";
+
+document.getElementById("result").innerHTML=
+`
+<h3>✅ Demo Video Ready!</h3>
+
+<p><b>Prompt:</b> ${prompt}</p>
+
+<video controls width="100%" style="border-radius:15px;">
+<source src="demo.mp4" type="video/mp4">
+</video>
+
+<br><br>
+
+<button>⬇ Download Video</button>
+`;
+
+}
+
+},500);
+
+}
+
 let prompt=document.getElementById("prompt").value;
 
 if(prompt==""){
