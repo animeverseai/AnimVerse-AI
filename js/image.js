@@ -1,5 +1,4 @@
 alert("image.js Loaded");
-function generateImage() {
     
 async function generateImage() {
   
