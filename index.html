@@ -280,47 +280,24 @@ margin-top:20px;">
 </footer>
 <script>
 
-function generateVideo(){
-  
-  async function realVideoGenerator(prompt) {
+function generateVideo() {
 
-    document.getElementById("videoResult").innerHTML =
-    "<h3>🎬 AI Video Generating...</h3>";
-    
-    const response = await fetch(
-"https://api-inference.huggingface.co/models/THUDM/CogVideoX-5B",
-{
-    method: "POST",
-    headers: {
-        Authorization: HFAK4RNCUTWuRwlJXLD1xbw8T5GH7o7
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        inputs: prompt
-    })
-});
+    let prompt = document.getElementById("prompt").value;
 
-const blob = await response.blob();
+    if (prompt == "") {
+        alert("Please enter a video prompt.");
+        return;
+    }
 
-const videoURL = URL.createObjectURL(blob);
-
-document.getElementById("videoResult").innerHTML = `
-<video controls width="100%" style="border-radius:15px;">
-<source src="${videoURL}" type="video/mp4">
-</video>
-<br><br>
-<a href="${videoURL}" download="AnimVerseAI.mp4">
-<button>⬇ Download Video</button>
-</a>
-`;
+    realVideoGenerator(prompt);
 
 }
 
-let prompt = document.getElementById("prompt").value;
+async function realVideoGenerator(prompt){
 
-if(prompt==""){
-alert("Please enter a video prompt.");
-return;
+document.getElementById("videoResult").innerHTML =
+"<h3>🎬 AI Video Generating...</h3>";
+
 }
 
 document.getElementById("videoLoading").style.display="block";
