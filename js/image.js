@@ -89,6 +89,30 @@ highly detailed
     imageBox.innerHTML = "";
     imageBox.appendChild(img);
     
+    // Favorite Button
+const favBtn = document.createElement("button");
+favBtn.innerHTML = "❤️ Favorite";
+favBtn.style.marginTop = "15px";
+
+favBtn.onclick = function () {
+
+    alert("Image Saved!");
+
+    const favBox = document.getElementById("favoriteImages");
+
+    const favImg = document.createElement("img");
+
+    favImg.src = imageUrl;
+    favImg.style.width = "100%";
+    favImg.style.borderRadius = "10px";
+
+    favBox.prepend(favImg);
+
+    favBtn.innerHTML = "❤️ Saved";
+    favBtn.disabled = true;
+};
+
+imageBox.appendChild(favBtn);
     const favBtn = document.createElement("button");
 
 favBtn.innerHTML = "❤️ Favorite";
