@@ -1,4 +1,6 @@
 alert("image.js Loaded");
+function generateImage() {
+    alert("Button Click Ho Gaya");
 async function generateImage() {
 
   const generateBtn = document.getElementById("generateBtn");
