@@ -302,16 +302,21 @@ async function realVideoGenerator(prompt){
     try{
 
         const response = await fetch(
-        "https://animverse-api.khanmaksud1234.workers.dev",
-        {
-            method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify({
-                prompt:prompt
-            })
-        });
+  "https://animverse-api.khanmaksud1234.workers.dev",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      prompt: prompt
+    })
+  }
+);
+
+if (!response.ok) {
+    throw new Error("HTTP " + response.status);
+}
 
         const blob = await response.blob();
 
