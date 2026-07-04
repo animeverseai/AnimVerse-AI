@@ -296,12 +296,46 @@ function generateVideo() {
 async function realVideoGenerator(prompt){
 
 document.getElementById("videoResult").innerHTML =
-"<h3>🎬 AI Video Generating...</h3>";
+"🎬 Generating Video...";
 
-await new Promise(resolve => setTimeout(resolve, 3000));
+try{
+
+const response = await fetch(
+"https://animverse-api.khanmaksud1234.workers.dev/generate-video",
+{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+prompt:prompt
+})
+});
+
+const data = await response.json();
+
+if(data.video){
+
+document.getElementById("videoResult").innerHTML = `
+<video controls width="500">
+<source src="${data.video}">
+</video>
+`;
+
+}else{
 
 document.getElementById("videoResult").innerHTML =
-"<h3>✅ Video Generator Connected Successfully</h3>";
+"❌ Video generation failed.";
+
+}
+
+}catch(e){
+
+document.getElementById("videoResult").innerHTML =
+"❌ API Error";
+
+}
+
 }
 
 </script>
