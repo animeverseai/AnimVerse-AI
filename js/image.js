@@ -57,11 +57,9 @@ highly detailed
             `<h3>🔄 Retrying... (${4 - retry}/3)</h3>`;
 
           setTimeout(() => {
-
             loadImage(retry - 1)
               .then(resolve)
               .catch(reject);
-
           }, 1500);
 
         } else {
@@ -81,23 +79,20 @@ highly detailed
   try {
 
     const { img, imageUrl } = await loadImage();
-
     loading.style.display = "none";
-    generateBtn.disabled = false;
-    generateBtn.innerHTML = "🎨 Generate Image";
+generateBtn.disabled = false;
+generateBtn.innerHTML = "🎨 Generate Image";
 
-    imageBox.innerHTML = "";
-    imageBox.appendChild(img);
-    
-    // Favorite Button
+imageBox.innerHTML = "";
+imageBox.appendChild(img);
+
+// ❤️ Favorite Button
 const favBtn = document.createElement("button");
 favBtn.innerHTML = "❤️ Favorite";
 favBtn.style.marginTop = "15px";
 
 favBtn.onclick = function () {
 
-    alert("Image Saved!");
-
     const favBox = document.getElementById("favoriteImages");
 
     const favImg = document.createElement("img");
@@ -110,43 +105,13 @@ favBtn.onclick = function () {
 
     favBtn.innerHTML = "❤️ Saved";
     favBtn.disabled = true;
+
 };
 
 imageBox.appendChild(favBtn);
-    const favBtn = document.createElement("button");
 
-favBtn.innerHTML = "❤️ Favorite";
-
-favBtn.onclick = () => {
-
-    const favBox = document.getElementById("favoriteImages");
-
-alert("Image Saved");
-
-favBtn.innerHTML = "❤️ Saved";
-
-favBtn.style.background = "green";
-
-favBtn.disabled = true;
-alert("Favorite button clicked");
-    const favImg = document.createElement("img");
-
-    favImg.src = imageUrl;
-    favImg.style.width = "100%";
-    favImg.style.borderRadius = "10px";
-
-    favBox.prepend(favImg);
-
-    favBtn.innerHTML = "❤️ Saved";
-
-    favBtn.disabled = true;
-
-};
-favBtn.style.marginTop = "15px";
-
-imageBox.appendChild(favBtn);
-
-const history = document.getElementById("imageHistory");
+// 🕘 History
+const historyBox = document.getElementById("imageHistory");
 
 const historyImg = document.createElement("img");
 
@@ -159,27 +124,29 @@ historyImg.onclick = () => {
     window.open(imageUrl, "_blank");
 };
 
-history.prepend(historyImg);
-    imageBox.innerHTML += `
-      <br><br>
-      <a href="${imageUrl}" target="_blank">
-        <button class="download-btn">
-          ⬇ Download Image
-        </button>
-      </a>
-    `;
+historyBox.prepend(historyImg);
 
-  } catch {
+// ⬇ Download Button
+imageBox.innerHTML += `
+<br><br>
+<a href="${imageUrl}" target="_blank">
+<button class="download-btn">
+⬇ Download Image
+</button>
+</a>
+`;
 
-    loading.style.display = "none";
-    generateBtn.disabled = false;
-    generateBtn.innerHTML = "🎨 Generate Image";
+} catch {
 
-    imageBox.innerHTML = `
-      <h3>❌ Image Generate Failed</h3>
-      <p>Server busy hai. Please try again.</p>
-    `;
+loading.style.display = "none";
+generateBtn.disabled = false;
+generateBtn.innerHTML = "🎨 Generate Image";
 
-  }
+imageBox.innerHTML = `
+<h3>❌ Image Generate Failed</h3>
+<p>Server busy hai. Please try again.</p>
+`;
+
+}
 
 }
