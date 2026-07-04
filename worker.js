@@ -2,26 +2,47 @@ export default {
   async fetch(request, env) {
 
     // CORS
+    const cors = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type"
+    };
+
     if (request.method === "OPTIONS") {
       return new Response(null, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "POST, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type"
-        }
+        headers: cors
       });
     }
 
-    try {
+    if (request.method !== "POST") {
+      return new Response(
+        JSON.stringify({
+          error: "Use POST request"
+        }),
+        {
+          status: 405,
+          headers: {
+            ...cors,
+            "Content-Type": "application/json"
+          }
+        }
+      );
+    }
 
-      const { prompt } = await request.json();
+    const body = await request.json();
+
+    const prompt = body.prompt || "";
+    const type = body.type || "image";
+
+    // IMAGE
+    if (type === "image") {
 
       const response = await fetch(
-        "https://api-inference.huggingface.co/models/THUDM/CogVideoX-5B",
+        "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
         {
           method: "POST",
           headers: {
-            "Authorization": `Bearer ${env.HF_TOKEN}`,
+            Authorization: `Bearer ${env.HF_TOKEN}`,
             "Content-Type": "application/json"
           },
           body: JSON.stringify({
@@ -30,35 +51,36 @@ export default {
         }
       );
 
-      if (!response.ok) {
-        const error = await response.text();
-        return new Response(error, {
-          status: response.status,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Content-Type": "text/plain"
-          }
-        });
-      }
-
       return new Response(response.body, {
         headers: {
-          "Content-Type": response.headers.get("Content-Type") || "video/mp4",
-          "Access-Control-Allow-Origin": "*"
-        }
-      });
-
-    } catch (err) {
-
-      return new Response(err.message, {
-        status: 500,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "text/plain"
+          ...cors,
+          "Content-Type": "image/png"
         }
       });
 
     }
+
+    // VIDEO
+    const response = await fetch(
+      "https://api-inference.huggingface.co/models/THUDM/CogVideoX-5B",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${env.HF_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          inputs: prompt
+        })
+      }
+    );
+
+    return new Response(response.body, {
+      headers: {
+        ...cors,
+        "Content-Type": "video/mp4"
+      }
+    });
 
   }
 }
