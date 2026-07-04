@@ -121,8 +121,6 @@ alert("Favorite Button Added");
 // 🕘 History
 const historyBox = document.getElementById("imageHistory");
 
-historyBox.appendChild(historyImg);
-alert("History Added");
 const historyImg = document.createElement("img");
 
 historyImg.src = imageUrl;
