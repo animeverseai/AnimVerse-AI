@@ -1,3 +1,4 @@
+alert("image.js Loaded");
 async function generateImage() {
 
   const generateBtn = document.getElementById("generateBtn");
