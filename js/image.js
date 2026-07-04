@@ -112,6 +112,7 @@ alert("Favorite Clicked");
 
 imageBox.appendChild(favBtn);
 
+alert("Favorite Button Added");
 // 🕘 History
 const historyBox = document.getElementById("imageHistory");
 
