@@ -89,6 +89,20 @@ highly detailed
     imageBox.innerHTML = "";
     imageBox.appendChild(img);
 
+const history = document.getElementById("imageHistory");
+
+const historyImg = document.createElement("img");
+
+historyImg.src = imageUrl;
+historyImg.style.width = "100%";
+historyImg.style.borderRadius = "10px";
+historyImg.style.cursor = "pointer";
+
+historyImg.onclick = () => {
+    window.open(imageUrl, "_blank");
+};
+
+history.prepend(historyImg);
     imageBox.innerHTML += `
       <br><br>
       <a href="${imageUrl}" target="_blank">
