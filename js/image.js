@@ -104,7 +104,7 @@ alert(favBox);
     favImg.style.width = "100%";
     favImg.style.borderRadius = "10px";
 
-    favBox.prepend(favImg);
+    favBox.innerHTML = "HELLO";
 
 alert("Image Added");
     favBtn.innerHTML = "❤️ Saved";
