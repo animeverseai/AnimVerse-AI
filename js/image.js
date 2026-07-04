@@ -97,6 +97,13 @@ favBtn.onclick = () => {
 
     const favBox = document.getElementById("favoriteImages");
 
+alert("Image Saved");
+
+favBtn.innerHTML = "❤️ Saved";
+
+favBtn.style.background = "green";
+
+favBtn.disabled = true;
 alert("Favorite button clicked");
     const favImg = document.createElement("img");
 
