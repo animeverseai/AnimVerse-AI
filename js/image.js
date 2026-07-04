@@ -94,7 +94,7 @@ favBtn.style.marginTop = "15px";
 
 favBtn.onclick = function () {
 
-alert("Favorite Clicked");
+console.log("Favorite Clicked");
     const favBox = document.getElementById("favoriteImages");
 
 alert(favBox);
