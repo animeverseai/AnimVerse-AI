@@ -128,14 +128,17 @@ historyImg.onclick = () => {
 historyBox.prepend(historyImg);
 
 // ⬇ Download Button
-imageBox.innerHTML += `
-<br><br>
-<a href="${imageUrl}" target="_blank">
-<button class="download-btn">
-⬇ Download Image
-</button>
-</a>
-`;
+const downloadBtn = document.createElement("button");
+
+downloadBtn.innerHTML = "⬇ Download Image";
+downloadBtn.style.marginTop = "15px";
+
+downloadBtn.onclick = function () {
+    window.open(imageUrl, "_blank");
+};
+
+imageBox.appendChild(document.createElement("br"));
+imageBox.appendChild(downloadBtn);
 
 } catch {
 
