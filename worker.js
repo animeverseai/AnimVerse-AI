@@ -18,10 +18,13 @@ export default {
     );
 
     return new Response(response.body, {
-      headers: {
-        "Content-Type": response.headers.get("Content-Type") || "video/mp4"
-      }
-    });
+  headers: {
+    "Content-Type": response.headers.get("Content-Type") || "video/mp4",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type"
+  }
+});
 
   }
 }
