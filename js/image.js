@@ -97,6 +97,7 @@ favBtn.onclick = function () {
 alert("Favorite Clicked");
     const favBox = document.getElementById("favoriteImages");
 
+alert(favBox);
     const favImg = document.createElement("img");
 
     favImg.src = imageUrl;
