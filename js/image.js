@@ -106,6 +106,7 @@ alert(favBox);
 
     favBox.prepend(favImg);
 
+alert("Image Added");
     favBtn.innerHTML = "❤️ Saved";
     favBtn.disabled = true;
 
