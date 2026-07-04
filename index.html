@@ -328,7 +328,8 @@ async function realVideoGenerator(prompt){
         document.getElementById("videoResult").innerHTML =
         "<h3>❌ Video Generate Failed</h3>";
 
-        console.log(error);
+        console.error(error);
+        alert(error.message);
 
     }
 
