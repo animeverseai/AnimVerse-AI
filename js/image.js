@@ -88,6 +88,14 @@ highly detailed
 
     imageBox.innerHTML = "";
     imageBox.appendChild(img);
+    
+    const favBtn = document.createElement("button");
+
+favBtn.innerHTML = "❤️ Favorite";
+
+favBtn.style.marginTop = "15px";
+
+imageBox.appendChild(favBtn);
 
 const history = document.getElementById("imageHistory");
 
