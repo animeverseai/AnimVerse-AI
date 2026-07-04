@@ -93,6 +93,23 @@ highly detailed
 
 favBtn.innerHTML = "❤️ Favorite";
 
+favBtn.onclick = () => {
+
+    const favBox = document.getElementById("favoriteImages");
+
+    const favImg = document.createElement("img");
+
+    favImg.src = imageUrl;
+    favImg.style.width = "100%";
+    favImg.style.borderRadius = "10px";
+
+    favBox.prepend(favImg);
+
+    favBtn.innerHTML = "❤️ Saved";
+
+    favBtn.disabled = true;
+
+};
 favBtn.style.marginTop = "15px";
 
 imageBox.appendChild(favBtn);
