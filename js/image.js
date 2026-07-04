@@ -2,7 +2,6 @@ alert("image.js Loaded");
     
 async function generateImage() {
   
-  alert("Button Click Ho Gaya");
 
   const generateBtn = document.getElementById("generateBtn");
   const loading = document.getElementById("loading");
@@ -97,10 +96,8 @@ favBtn.style.marginTop = "15px";
 
 favBtn.onclick = function () {
 
-console.log("Favorite Clicked");
     const favBox = document.getElementById("favoriteImages");
 
-alert(favBox);
     const favImg = document.createElement("img");
 
     favImg.src = imageUrl;
@@ -109,7 +106,6 @@ alert(favBox);
 
     favBox.prepend(favImg);
 
-alert("Image Added");
     favBtn.innerHTML = "❤️ Saved";
     favBtn.disabled = true;
 
@@ -117,7 +113,6 @@ alert("Image Added");
 
 imageBox.appendChild(favBtn);
 
-alert("Favorite Button Added");
 // 🕘 History
 const historyBox = document.getElementById("imageHistory");
 
