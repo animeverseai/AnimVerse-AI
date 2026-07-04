@@ -97,6 +97,7 @@ favBtn.onclick = () => {
 
     const favBox = document.getElementById("favoriteImages");
 
+alert("Favorite button clicked");
     const favImg = document.createElement("img");
 
     favImg.src = imageUrl;
