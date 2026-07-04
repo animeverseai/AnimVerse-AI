@@ -302,6 +302,7 @@ async function realVideoGenerator(prompt){
     try{
 
         const response = await fetch(
+          console.log(response.status);
   "https://animverse-api.khanmaksud1234.workers.dev",
   {
     method: "POST",
