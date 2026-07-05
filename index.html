@@ -285,6 +285,9 @@ margin-top:20px;">
 
   <button id="signupBtn">Signup</button>
 </div>
+<div id="authBox" style="display:none;">
+  Login Box
+</div>
 </footer>
 
 <script>
@@ -354,7 +357,7 @@ if (!response.ok) {
 
 
 function openLogin() {
-  alert("Login Clicked");
+  document.getElementById("authBox").style.display = "block";
 }
 
 function closeLogin() {
