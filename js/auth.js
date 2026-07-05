@@ -32,6 +32,7 @@ const loginBtn = document.getElementById("loginBtn");
 
 if (loginBtn) {
   loginBtn.addEventListener("click", () => {
+    alert("Login button clicked");
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
