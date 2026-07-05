@@ -111,3 +111,4 @@ async function generateImage() {
   generateBtn.innerHTML = "🎨 Generate Image";
 
 }
+window.generateImage = generateImage;
