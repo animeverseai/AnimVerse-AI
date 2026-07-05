@@ -33,16 +33,7 @@ async function generateImage() {
     })
   }
 );
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          type: "image",
-          prompt: style + " " + prompt
-        })
-      }
-    );
+        
 
     if (!response.ok) {
       throw new Error("Image generation failed");
