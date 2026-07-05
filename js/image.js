@@ -21,7 +21,7 @@ async function generateImage() {
   try {
 
     const response = await fetch(
-  "https://animverse-api.khanmaksud1234.workers.dev"
+  "https://animverse-api.khanmaksud1234.workers.dev",
   {
     method: "POST",
     headers: {
