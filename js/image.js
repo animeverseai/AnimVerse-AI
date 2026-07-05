@@ -21,8 +21,18 @@ async function generateImage() {
   try {
 
     const response = await fetch(
-      https://animeverseai.khanmaksud1234.workers.dev
-      {
+  "https://animeverseai.khanmaksud1234.workers.dev",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      type: "image",
+      prompt: style + " " + prompt
+    })
+  }
+);
         method: "POST",
         headers: {
           "Content-Type": "application/json"
