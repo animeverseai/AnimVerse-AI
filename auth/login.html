@@ -68,12 +68,7 @@ Don't have an account?
 </p>
 </div>
 <script type="module" src="../js/auth.js"></script>
-import { app } from "../firebase-config.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-const auth = getAuth(app);
-
-document.getElementById("loginBtn").addEventListener("click", () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
