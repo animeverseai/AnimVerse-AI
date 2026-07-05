@@ -159,7 +159,7 @@ transform:rotate(360deg);
 <a href="#">Home</a>
 <a href="#">AI Video</a>
 <a href="#">AI Image</a>
-<a href="#">Login</a>
+<a href="#" onclick="openLogin()">Login</a>
 </nav>
 
 </header>
@@ -276,6 +276,15 @@ margin-top:20px;">
 
 <footer>
 <p>© 2026 AnimVerse AI. All Rights Reserved.</p>
+<div id="authBox" style="display:none;">
+  <input type="email" id="email" placeholder="Email"><br><br>
+
+  <input type="password" id="password" placeholder="Password"><br><br>
+
+  <button id="loginBtn">Login</button>
+
+  <button id="signupBtn">Signup</button>
+</div>
 </footer>
 
 <script>
