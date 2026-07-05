@@ -61,13 +61,13 @@ text-decoration:none;
 <p>Login to your account</p>
 <input type="email" id="email" placeholder="Email">
 <input type="password" id="password" placeholder="Password">
-<button id="loginBtn" onclick="alert('Button Working')">Login</button>
+<button id="loginBtn">Login</button>
 <p style="margin-top:20px;">
 Don't have an account?
 <a href="signup.html">Create Account</a>
 </p>
 </div>
-<script type="module">
+<script type="module" src="../js/auth.js"></script>
 import { app } from "../firebase-config.js";
 import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
