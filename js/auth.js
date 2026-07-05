@@ -29,6 +29,7 @@ if (signupBtn) {
 
 // Login
 const loginBtn = document.getElementById("loginBtn");
+alert(document.getElementById("loginBtn"));
 
 if (loginBtn) {
   loginBtn.addEventListener("click", () => {
