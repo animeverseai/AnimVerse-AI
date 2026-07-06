@@ -35,7 +35,18 @@
     
     <h2>🚀 Aage Kya Kar Sakte Ho</h2>
     <p>Abhi yeh page simple hai. Baad mein yahan aapki saari images, videos aur history dikhegi.</p>
-    
+
+ <h2>🖼️ AI Image Generator</h2>
+
+<input id="prompt" placeholder="Yahan prompt likho">
+
+<br><br>
+
+<button id="generateBtn">Generate Image</button>
+
+<br><br>
+
+<img id="resultImage" width="300">
     <button onclick="logout()">Logout Karo</button>
 
     <!-- Yeh script login check karta hai -->
@@ -50,6 +61,19 @@
                 document.getElementById('user-email').textContent = user.email;
             }
         });
+    
+    document.getElementById("generateBtn").onclick = () => {
+
+    let prompt = document.getElementById("prompt").value;
+
+    if (prompt == "") {
+        alert("Prompt likho");
+        return;
+    }
+
+    document.getElementById("resultImage").src =
+    "https://picsum.photos/300";
+};
 
         function logout() {
             window.location.href = '../index.html';
