@@ -1,30 +1,57 @@
-import { auth } from './firebase-config.js';
-import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+alert("auth.js loaded");
+import { app } from "../firebase-config.js";
 
-document.addEventListener('DOMContentLoaded', () => {
-    const loginForm = document.getElementById('login-form');
-    
-    // Yeh automatically check karta hai login ho gaya hai ya nahi
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            window.location.href = 'auth/dashboard.html';
-        }
-    });
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-    if (loginForm) {
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const errorMsg = document.getElementById('error-message');
+const auth = getAuth(app);
 
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-            } catch (error) {
-                console.error(error);
-                errorMsg.textContent = "Galat email ya password. Dobara try karo.";
-                errorMsg.style.display = 'block';
-            }
-        });
-    }
+// Signup
+const signupBtn = document.getElementById("signupBtn");
+
+if (signupBtn) {
+  signupBtn.addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        alert("Account Created Successfully!");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  });
+}
+
+// Login
+const loginBtn = document.getElementById("loginBtn");
+alert(document.getElementById("loginBtn"));
+
+if (loginBtn) {
+  loginBtn.addEventListener("click", () => {
+    alert("Login button clicked");
+
+signInWithEmailAndPassword(auth, email, password)
+.then(() => {
+    alert("Login Successful");
+})
+.catch((error) => {
+    alert(error.code);
 });
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+             .then(() => {
+        alert("Login Successful!");
+        window.location.href = "../auth/dashboard.html";
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  });
+}
