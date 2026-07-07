@@ -62,8 +62,6 @@ export default {
 
     // VIDEO
     const response = await fetch(
-      console.log(response.status);
-console.log(await response.text());
       "https://api-inference.huggingface.co/models/THUDM/CogVideoX-5B",
       {
         method: "POST",
