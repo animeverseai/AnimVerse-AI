@@ -44,8 +44,8 @@ if (loginBtn) {
         alert("Login Successful!");
         window.location.href = "auth/dashboard.html";
       })
-      .catch((error) => {
-        alert(error.message);
-      });
+    .catch((error) => {
+    alert(error.code);
+});
   });
 }
