@@ -28,8 +28,9 @@ async function generateImage() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      prompt: style + " " + prompt
-    })
+  prompt: style + " " + prompt,
+  type: "image"
+})
   }
 );
         
