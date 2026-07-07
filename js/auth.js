@@ -48,7 +48,7 @@ signInWithEmailAndPassword(auth, email, password)
     signInWithEmailAndPassword(auth, email, password)
              .then(() => {
         alert("Login Successful!");
-        window.location.href = "../auth/dashboard.html";
+        window.location.href = "auth/dashboard.html";
       })
       .catch((error) => {
         alert(error.message);
