@@ -1,4 +1,4 @@
-alert("auth.js loaded");
+alert("NEW AUTH JS LOADED");
 import { app } from "../firebase-config.js";
 
 import {
