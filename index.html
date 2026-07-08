@@ -319,9 +319,9 @@ async function realVideoGenerator(prompt){
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      prompt: prompt
-    })
-  }
+  prompt: prompt,
+  type: "video"
+})
 );
 
 console.log(response.status);
