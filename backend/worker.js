@@ -38,22 +38,13 @@ export default {
       });
     }
 
-    // VIDEO
+    // VIDEO — fast/lightweight model taaki free plan ki subrequest limit cross na ho
     try {
       const client = new InferenceClient(env.HF_TOKEN);
       const videoBlob = await client.textToVideo({
         provider: "fal-ai",
-        model: "zai-org/CogVideoX-5b",
+        model: "Lightricks/LTX-Video-0.9.8-13B-distilled",
         inputs: prompt
       });
       return new Response(videoBlob, {
-        headers: { ...cors, "Content-Type": "video/mp4" }
-      });
-    } catch (err) {
-      return new Response(
-        JSON.stringify({ error: "HF video generation failed", details: err.message }),
-        { status: 502, headers: { ...cors, "Content-Type": "application/json" } }
-      );
-    }
-  }
-};
+        headers: { ...cors, "Content-Type":
