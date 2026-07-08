@@ -1,42 +1,25 @@
 export default {
   async fetch(request, env) {
-
-    // CORS
     const cors = {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type"
     };
-
     if (request.method === "OPTIONS") {
-      return new Response(null, {
-        headers: cors
-      });
+      return new Response(null, { headers: cors });
     }
-
     if (request.method !== "POST") {
       return new Response(
-        JSON.stringify({
-          error: "Use POST request"
-        }),
-        {
-          status: 405,
-          headers: {
-            ...cors,
-            "Content-Type": "application/json"
-          }
-        }
+        JSON.stringify({ error: "Use POST request" }),
+        { status: 405, headers: { ...cors, "Content-Type": "application/json" } }
       );
     }
-
     const body = await request.json();
-
     const prompt = body.prompt || "";
     const type = body.type || "image";
 
-    // IMAGE
+    // IMAGE — YE WAISA HI HAI, KUCH CHANGE NAHI ✅
     if (type === "image") {
-
       const response = await fetch(
         "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
         {
@@ -45,22 +28,15 @@ export default {
             Authorization: `Bearer ${env.HF_TOKEN}`,
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({
-            inputs: prompt
-          })
+          body: JSON.stringify({ inputs: prompt })
         }
       );
-
       return new Response(response.body, {
-        headers: {
-          ...cors,
-          "Content-Type": "image/png"
-        }
+        headers: { ...cors, "Content-Type": "image/png" }
       });
-
     }
 
-    // VIDEO
+    // VIDEO — SIRF YE HISSA UPDATE HUA HAI
     const response = await fetch(
       "https://api-inference.huggingface.co/models/THUDM/CogVideoX-5B",
       {
@@ -69,18 +45,20 @@ export default {
           Authorization: `Bearer ${env.HF_TOKEN}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          inputs: prompt
-        })
+        body: JSON.stringify({ inputs: prompt })
       }
     );
 
-    return new Response(response.body, {
-      headers: {
-        ...cors,
-        "Content-Type": "video/mp4"
-      }
-    });
+    if (!response.ok) {
+      const errText = await response.text();
+      return new Response(
+        JSON.stringify({ error: "HF video model failed", status: response.status, details: errText }),
+        { status: 502, headers: { ...cors, "Content-Type": "application/json" } }
+      );
+    }
 
+    return new Response(response.body, {
+      headers: { ...cors, "Content-Type": "video/mp4" }
+    });
   }
-}
+};
