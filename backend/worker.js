@@ -20,7 +20,7 @@ export default {
     const prompt = body.prompt || "";
     const type = body.type || "image";
 
-    // IMAGE — YE WAISA HI HAI, KUCH CHANGE NAHI ✅
+    // IMAGE
     if (type === "image") {
       const response = await fetch(
         "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
@@ -38,20 +38,22 @@ export default {
       });
     }
 
-    // VIDEO — NAYA CORRECT MODEL + PROVIDER
+    // VIDEO
     try {
       const client = new InferenceClient(env.HF_TOKEN);
-
       const videoBlob = await client.textToVideo({
         provider: "fal-ai",
         model: "zai-org/CogVideoX-5b",
         inputs: prompt
       });
-
       return new Response(videoBlob, {
         headers: { ...cors, "Content-Type": "video/mp4" }
       });
     } catch (err) {
       return new Response(
         JSON.stringify({ error: "HF video generation failed", details: err.message }),
-        { status: 502, headers: { ...cors, "Content-Type":
+        { status: 502, headers: { ...cors, "Content-Type": "application/json" } }
+      );
+    }
+  }
+};
