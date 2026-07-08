@@ -1,3 +1,5 @@
+import { InferenceClient } from "@huggingface/inference";
+
 export default {
   async fetch(request, env) {
     const cors = {
@@ -36,29 +38,20 @@ export default {
       });
     }
 
-    // VIDEO — SIRF YE HISSA UPDATE HUA HAI
-    const response = await fetch(
-      "https://api-inference.huggingface.co/models/THUDM/CogVideoX-5B",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${env.HF_TOKEN}`,
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ inputs: prompt })
-      }
-    );
+    // VIDEO — NAYA CORRECT MODEL + PROVIDER
+    try {
+      const client = new InferenceClient(env.HF_TOKEN);
 
-    if (!response.ok) {
-      const errText = await response.text();
+      const videoBlob = await client.textToVideo({
+        provider: "fal-ai",
+        model: "zai-org/CogVideoX-5b",
+        inputs: prompt
+      });
+
+      return new Response(videoBlob, {
+        headers: { ...cors, "Content-Type": "video/mp4" }
+      });
+    } catch (err) {
       return new Response(
-        JSON.stringify({ error: "HF video model failed", status: response.status, details: errText }),
-        { status: 502, headers: { ...cors, "Content-Type": "application/json" } }
-      );
-    }
-
-    return new Response(response.body, {
-      headers: { ...cors, "Content-Type": "video/mp4" }
-    });
-  }
-};
+        JSON.stringify({ error: "HF video generation failed", details: err.message }),
+        { status: 502, headers: { ...cors, "Content-Type":
