@@ -300,56 +300,12 @@ function generateVideo(){
         return;
     }
 
-    realVideoGenerator(prompt);
-
-}
-
-async function realVideoGenerator(prompt){
-
-    document.getElementById("videoResult").innerHTML =
-    "<h3>🎬 Generating Video...</h3>";
-
-    try{
-
-        const response = await fetch(
-          "https://animverse-api.khanmaksud1234.workers.dev",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-              prompt: prompt,
-              type: "video"
-            })
-          }
-        );
-
-        console.log(response.status);
-
-        if (!response.ok) {
-            throw new Error("HTTP " + response.status);
-        }
-
-        const blob = await response.blob();
-
-        const videoURL = URL.createObjectURL(blob);
-
-        document.getElementById("videoResult").innerHTML = `
-        <video controls width="100%" style="border-radius:15px;">
-            <source src="${videoURL}" type="video/mp4">
-        </video>
-        `;
-
-    }catch(error){
-
-        document.getElementById("videoResult").innerHTML =
-        "<h3>❌ Video Generate Failed</h3>";
-
-        console.error(error);
-        alert(error.message);
-
-    }
+    document.getElementById("videoResult").innerHTML = `
+        <div style="text-align:center; padding:30px; background:#1e2a4a; border-radius:15px;">
+            <h2>🚧 Coming Soon</h2>
+            <p style="color:#bdbdbd; margin-top:10px;">AI Video Generator is launching soon! Try our AI Image Generator meanwhile 🎨</p>
+        </div>
+    `;
 
 }
 
