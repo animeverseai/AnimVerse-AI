@@ -18,7 +18,6 @@ export default {
     const prompt = body.prompt || "";
     const type = body.type || "image";
 
-    // IMAGE — Cloudflare Workers AI (free, alag quota, turant kaam karega)
     if (type === "image") {
       try {
         const response = await env.AI.run(
@@ -36,7 +35,6 @@ export default {
       }
     }
 
-    // VIDEO — HF credits reset hone ka wait karna padega
     return new Response(
       JSON.stringify({ error: "Video generation temporarily unavailable. Please try again later." }),
       { status: 503, headers: { ...cors, "Content-Type": "application/json" } }
