@@ -1,5 +1,3 @@
-import { InferenceClient } from "@huggingface/inference";
-
 export default {
   async fetch(request, env) {
     const cors = {
@@ -20,31 +18,28 @@ export default {
     const prompt = body.prompt || "";
     const type = body.type || "image";
 
-    // IMAGE
+    // IMAGE — Cloudflare Workers AI (free, alag quota, turant kaam karega)
     if (type === "image") {
-      const response = await fetch(
-        "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0",
-        {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${env.HF_TOKEN}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ inputs: prompt })
-        }
-      );
-      return new Response(response.body, {
-        headers: { ...cors, "Content-Type": "image/png" }
-      });
+      try {
+        const response = await env.AI.run(
+          "@cf/stabilityai/stable-diffusion-xl-base-1.0",
+          { prompt: prompt }
+        );
+        return new Response(response, {
+          headers: { ...cors, "Content-Type": "image/png" }
+        });
+      } catch (err) {
+        return new Response(
+          JSON.stringify({ error: "Image generation failed", details: err.message }),
+          { status: 502, headers: { ...cors, "Content-Type": "application/json" } }
+        );
+      }
     }
 
-    // VIDEO — fast/lightweight model taaki free plan ki subrequest limit cross na ho
-    try {
-      const client = new InferenceClient(env.HF_TOKEN);
-      const videoBlob = await client.textToVideo({
-        provider: "fal-ai",
-        model: "Lightricks/LTX-Video-0.9.8-13B-distilled",
-        inputs: prompt
-      });
-      return new Response(videoBlob, {
-        headers: { ...cors, "Content-Type":
+    // VIDEO — HF credits reset hone ka wait karna padega
+    return new Response(
+      JSON.stringify({ error: "Video generation temporarily unavailable. Please try again later." }),
+      { status: 503, headers: { ...cors, "Content-Type": "application/json" } }
+    );
+  }
+};
