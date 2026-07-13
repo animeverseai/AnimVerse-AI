@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCxT3jCBglubbkSdZ46gWZd2LV-ETNUIOM",
+  apiKey: AIzaSyCxT3jCBglubbkSdZ46gWZd2LV-ETNUIOM
   authDomain: "animverse-ai.firebaseapp.com",
   projectId: "animverse-ai",
   storageBucket: "animverse-ai.firebasestorage.app",
