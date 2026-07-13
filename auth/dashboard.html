@@ -57,17 +57,14 @@ margin-bottom:10px;
 <button id="logoutBtn">Logout</button>
 </header>
 <div class="container">
-
 <div class="card">
 <h2>Welcome!</h2>
 <p>Your account is ready.</p>
 </div>
-
 <div class="card">
 <h3>Credits</h3>
 <p>Free Credits: 5</p>
 </div>
-
 <div class="card">
 <h3>🎬 AI Video Generator</h3>
 <div style="text-align:center; padding:20px; background:#1e2a4a; border-radius:10px;">
@@ -75,11 +72,9 @@ margin-bottom:10px;
   <p style="color:#bdbdbd; margin-top:10px;">AI Video Generator is launching soon! Try our AI Image Generator below 🎨</p>
 </div>
 </div>
-
 <div class="card">
 <h3>🖼 AI Image Generator</h3>
 <textarea id="imagePrompt" placeholder="Describe your image..."></textarea>
-
 <select id="imageStyle">
   <option value="">🎨 Select Style</option>
   <option value="Realistic">Realistic</option>
@@ -89,26 +84,23 @@ margin-bottom:10px;
   <option value="Cyberpunk">Cyberpunk</option>
   <option value="Fantasy">Fantasy</option>
 </select>
-
 <select id="imageSize">
   <option value="512">⚡ Fast (512×512)</option>
   <option value="768">🌟 Balanced (768×768)</option>
   <option value="1024" selected>💎 HD (1024×1024)</option>
 </select>
-
 <button id="generateBtn" onclick="generateImage()">🎨 Generate Image</button>
-
 <div id="loading" style="display:none;text-align:center;margin-top:20px;">
   <p>Generating Image...</p>
 </div>
-
 <div id="imageResult" style="margin-top:20px;text-align:center;"></div>
+
+<h3 style="margin-top:30px;">❤️ Favorite Images</h3>
+<div id="favoriteImages"
+style="display:grid;
+grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+gap:15px;
+margin-top:20px;">
 </div>
 
-</div>
-
-<script type="module" src="../js/auth.js"></script>
-<script src="../js/image.js"></script>
-
-</body>
-</html>
+<h3 style="margin-top:30px;">🕘 Image
